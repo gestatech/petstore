@@ -12,6 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <javaee.api.version>8.0</javaee.api.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.2.1</maven.source.plugin.version>
@@ -29,8 +32,9 @@
         <eclipselink.version>2.5.0</eclipselink.version>
         <glassfish.embedded.version>4.0</glassfish.embedded.version>
         <cargo.plugin.version>1.4.4</cargo.plugin.version>
-        <glassfish.domain.name>domain1</glassfish.domain.name>
-        <glassfish.home>${glassfish.home.prefix}/glassfish5</glassfish.home>
+        <glassfish.domain.name>${glassfish.domain}</glassfish.domain.name>
+        <glassfish.domain.user>${glassfish.user}</glassfish.domain.user>
+        <glassfish.home>${glassfish.home.prefix}</glassfish.home>
         <integration.container.id>glassfish5x</integration.container.id>
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -51,7 +55,6 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven.compiler.plugin.version}</version>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
@@ -74,7 +77,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
@@ -100,20 +102,19 @@
                         <home>${glassfish.home}/glassfish/domains</home>
                         <properties>
                             <cargo.glassfish.domain.name>${glassfish.domain.name}</cargo.glassfish.domain.name>
-                            <!--cargo.remote.username></cargo.remote.username-->
+                            <cargo.remote.username>${glassfish.domain.user}</cargo.remote.username>
                             <cargo.remote.password/>
                         </properties>
                     </configuration>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -139,7 +140,8 @@
                 <configuration>
                     <mavenExecutorId>forked-path</mavenExecutorId>
                     <useReleaseProfile>false</useReleaseProfile>
-                    <arguments>${release.arguments}</arguments>
+                    <!-- TODO: define release arguments values -->
+                    <!--arguments>${release.arguments}</arguments-->
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
