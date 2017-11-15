@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,9 +13,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
         <javaee.api.version>8.0</javaee.api.version>
+        <eclipselink.version>2.5.0</eclipselink.version>
+
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.2.1</maven.source.plugin.version>
         <maven.clean.plugin.version>2.5</maven.clean.plugin.version>
@@ -28,18 +32,28 @@
         <maven.license.plugin.version>1.10.b1</maven.license.plugin.version>
         <maven.release.plugin.version>2.5.2</maven.release.plugin.version>
         <maven.exec.plugin.version>1.2.1</maven.exec.plugin.version>
-        <junit.version>4.11</junit.version>
-        <eclipselink.version>2.5.0</eclipselink.version>
-        <glassfish.embedded.version>4.0</glassfish.embedded.version>
-        <cargo.plugin.version>1.4.4</cargo.plugin.version>
-        <glassfish.domain.name>${glassfish.domain}</glassfish.domain.name>
-        <glassfish.domain.user>${glassfish.user}</glassfish.domain.user>
-        <glassfish.home>${glassfish.home.prefix}</glassfish.home>
-        <integration.container.id>glassfish5x</integration.container.id>
+
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <maven.source.skip>true</maven.source.skip>
         <maven.source.attach>false</maven.source.attach>
+
+        <glassfish.embedded.version>4.0</glassfish.embedded.version>
+        <cargo.plugin.version>1.4.4</cargo.plugin.version>
+        <glassfish.domain.name>${glassfish.domain.name}</glassfish.domain.name>
+        <glassfish.domain.user>${glassfish.domain.user}</glassfish.domain.user>
+        <glassfish.install.home>${glassfish.install.home}</glassfish.install.home>
+        <glassfish.host.name>${glassfish.host.name}</glassfish.host.name>
+        <glassfish.host.port>${glassfish.host.port}</glassfish.host.port>
+        <integration.container.id>glassfish5x</integration.container.id>
+
+        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <jquery.version>2.2.4</jquery.version>
+        <primefaces.version>6.1</primefaces.version>
+        <equalsverifier.version>1.7.3</equalsverifier.version>
+        <junit.version>4.12</junit.version>
+        <arquillian.version>1.1.11.Final</arquillian.version>
+        <arquillian.glassfish.remote.version>1.0.1</arquillian.glassfish.remote.version>
     </properties>
 
     <modules>
@@ -69,6 +83,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven.war.plugin.version}</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
@@ -95,11 +112,11 @@
                     <container>
                         <containerId>${integration.container.id}</containerId>
                         <type>installed</type>
-                        <home>${glassfish.home}</home>
+                        <home>${glassfish.install.home}</home>
                     </container>
                     <configuration>
                         <type>existing</type>
-                        <home>${glassfish.home}/glassfish/domains</home>
+                        <home>${glassfish.install.home}/glassfish/domains</home>
                         <properties>
                             <cargo.glassfish.domain.name>${glassfish.domain.name}</cargo.glassfish.domain.name>
                             <cargo.remote.username>${glassfish.domain.user}</cargo.remote.username>
