@@ -41,9 +41,9 @@ public class AccountBean extends AbstractBean implements Serializable {
     @LoggedIn
     private Customer loggedinCustomer;
 
-    @Inject
-    @SessionScoped
-    private transient LoginContext loginContext;
+    //@Inject
+    //@SessionScoped
+    //private transient LoginContext loginContext;
 
     // ======================================
     // =              Public Methods        =
@@ -59,7 +59,7 @@ public class AccountBean extends AbstractBean implements Serializable {
             return null;
         }
 
-// TODO       loginContext.login();
+        // TODO       loginContext.login();
         loggedinCustomer = customerService.findCustomer(credentials.getLogin());
         return "main.faces";
     }

@@ -2,8 +2,6 @@ package be.gestatech.application.petstore.view.admin;
 
 import be.gestatech.application.petstore.exceptions.ValidationException;
 import be.gestatech.application.petstore.model.*;
-import be.gestqtech.application.petstore.model.*;
-import org.agoncal.application.petstore.model.*;
 import be.gestatech.application.petstore.view.shopping.ShoppingCartItem;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
