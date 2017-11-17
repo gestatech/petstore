@@ -3,11 +3,9 @@ package be.gestatech.application.petstore.view.shopping;
 import be.gestatech.application.petstore.model.*;
 import be.gestatech.application.petstore.service.CatalogService;
 import be.gestatech.application.petstore.service.PurchaseOrderService;
-import be.gestatech.application.petstore.view.CatchException;
-import be.gestqtech.application.petstore.model.*;
-import org.agoncal.application.petstore.model.*;
 import be.gestatech.application.petstore.util.Loggable;
 import be.gestatech.application.petstore.view.AbstractBean;
+import be.gestatech.application.petstore.view.CatchException;
 import be.gestatech.application.petstore.view.LoggedIn;
 
 import javax.enterprise.context.Conversation;
