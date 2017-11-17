@@ -10,6 +10,12 @@
     <packaging>pom</packaging>
     <name>petstore-parent</name>
 
+    <description>
+        This is the parent for all petstore artifacts, and contains project
+        metadata, shared/stable configuration, and other common settings that
+        change very rarely.
+    </description>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
